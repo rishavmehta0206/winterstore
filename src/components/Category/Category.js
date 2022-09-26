@@ -17,22 +17,19 @@ const Category = ({ handleCategory }) => {
   }, [products]);
 
   return (
-    <div style={{ display: "flex", gap: "20px", marginTop: "20px" }}>
-      {categories?.map((category, index) => {
-        return (
-          <div
-            key={index}
-            onClick={() => handleCategory(category)}
-            style={{
-              padding: "10px",
-              cursor: "pointer",
-              border: "1px solid black",
-            }}
-          >
-            {category}
-          </div>
-        );
-      })}
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        {categories?.map((category, index) => {
+          return (
+            <div
+              onClick={() => handleCategory(category)}
+              className={styles.category}
+            >
+              {category}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

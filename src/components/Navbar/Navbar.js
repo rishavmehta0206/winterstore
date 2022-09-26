@@ -11,7 +11,7 @@ const Navbar = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div
-          onClick={() =>navigate("/")}
+          onClick={() => navigate("/")}
           style={{ cursor: "pointer" }}
           className={styles.left}
         >
@@ -52,7 +52,14 @@ const Navbar = () => {
 
 export default Navbar;
 
-const navlinkStyles = {
-  color: "white",
-  textDecoration: "none",
+const navlinkStyles = ({ isActive }) => {
+  return {
+    textDecoration: isActive ? "underline" : "none",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "0px 10px",
+    color: isActive ? "white" : "",
+  };
 };

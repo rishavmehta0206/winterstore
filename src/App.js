@@ -6,6 +6,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Favourite = lazy(() => import("./context/Fav/Favourite"));
 const Cart = lazy(() => import("./components/Cart/Cart"));
 const Single = lazy(() => import("./components/Single/Single"));
+const Login = lazy(() => import("./pages/Login/Login"));
 // import Shared from "./pages/Shared";
 // import Home from "./pages/Home";
 // import Favourite from "./context/Fav/Favourite";
@@ -22,6 +23,7 @@ function App() {
             <Route path="/:id" element={<Single />} />
             <Route path="/favourite" element={<Favourite />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
       </Suspense>

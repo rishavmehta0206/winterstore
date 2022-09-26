@@ -1,0 +1,52 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(228, 232, 241);
+}
+.form {
+  width: 600px;
+  height: auto;
+  background-color: white;
+  padding: 20px;
+}
+.fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fields input {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.fields span {
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+.fields button {
+  padding: 5px;
+  font-size: 20px;
+  width: 80px;
+}
+.fields button:hover {
+  transition: all 0.3s;
+  background: black;
+  color: white;
+  cursor: pointer;
+}

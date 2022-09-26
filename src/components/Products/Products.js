@@ -1,15 +1,40 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
+import Slider from "../Slider/Slider";
 import styles from "./Products.module.css";
 
 const Products = ({ products }) => {
+  const [overlaySlider, setOverlaySlider] = useState(false);
+  const [sliderIndex, setSliderIndex] = useState(null);
+
   return (
     <div className={styles.container}>
+      {overlaySlider && (
+        <div
+          onClick={() => setOverlaySlider(false)}
+          className={styles.overlaySlider}
+        >
+          <div
+            style={{ height: "500px", width: "500px" }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <Slider products={products} sliderIndex={sliderIndex} />
+          </div>
+        </div>
+      )}
       <div className={styles.wrapper}>
         <div className={styles.products}>
-          {products?.map((product) => {
-            return <Product product={product} />;
+          {products?.map((product, index) => {
+            return (
+              <Product
+                overlaySlider={overlaySlider}
+                setOverlaySlider={setOverlaySlider}
+                product={product}
+                setSliderIndex={setSliderIndex}
+                index={index}
+              />
+            );
           })}
         </div>
       </div>
@@ -19,7 +44,13 @@ const Products = ({ products }) => {
 
 export default Products;
 
-const Product = ({ product }) => {
+const Product = ({
+  product,
+  setOverlaySlider,
+  overlaySlider,
+  setSliderIndex,
+  index,
+}) => {
   const { dispatch, favourites, products, cart } = useContext(AppContext);
   const [fav, setFav] = useState(false);
   const navigate = useNavigate();
@@ -64,6 +95,11 @@ const Product = ({ product }) => {
       payload: products.find((product) => product.id === proId),
     });
   };
+
+  const handleSlider = (index) => {
+    setOverlaySlider(true);
+    setSliderIndex(index);
+  };
   console.log(favourites);
   return (
     <div key={product.id} className={styles.product}>
@@ -79,6 +115,9 @@ const Product = ({ product }) => {
         </div>
         <div onClick={() => addToCart(product.id)} className={styles.visit}>
           <i className="fa fa-solid fa-cart-shopping"></i>
+        </div>
+        <div onClick={() => handleSlider(index)} className={styles.visit}>
+          <i className="fa fa-solid fa-magnifying-glass-plus"></i>
         </div>
       </div>
       <div className={styles.imageContainer}>

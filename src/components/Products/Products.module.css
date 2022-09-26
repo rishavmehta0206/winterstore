@@ -116,6 +116,21 @@
   color: white;
 }
 
+.overlaySlider {
+  top: 0;
+  border: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 1100px) {
   .products {
     padding: 0 50px;
